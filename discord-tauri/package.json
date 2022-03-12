@@ -1,0 +1,18 @@
+{
+  "name": "discord-tauri",
+  "scripts": {
+    "tauri": "tauri",
+    "tauri:deps": "tauri deps update",
+    "tauri:version": "tauri --version",
+    "tauri:dev": "tauri dev",
+    "build:debug": "tauri build --debug",
+    "build:publish": "tauri build",
+    "build": "yarn build:publish"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^1.0.0-rc.2"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.0.0-rc.7"
+  }
+}
