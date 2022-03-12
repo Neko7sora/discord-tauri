@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: cd discord-tauri
       run: |
-        cd numalab-app
+        cd discord-tauri
     - name: setup node
       uses: actions/setup-node@v2
       with:
