@@ -34,7 +34,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y webkit2gtk-4.0
     - name: install app dependencies and build it
-      run: cd numalab-app && yarn && yarn build:publish
+      run: cd discord-tauri && yarn && yarn build:publish
     - uses: tauri-apps/tauri-action@v0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
