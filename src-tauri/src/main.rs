@@ -237,6 +237,7 @@ fn main() {
 
             WebviewWindowBuilder::new(app, "main", WebviewUrl::External(discord_url))
                 .title(APP_TITLE)
+                .decorations(false)
                 .inner_size(1320.0, 860.0)
                 .min_inner_size(920.0, 640.0)
                 .resizable(true)
