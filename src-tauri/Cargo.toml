@@ -1,7 +1,7 @@
 [package]
-name = "misskey-tauri"
+name = "discord-tauri"
 version = "1.0.0"
-description = "A Tauri desktop browser that opens misskey.io in-app and routes other links to the external browser."
+description = "A Tauri desktop browser that opens Discord login in-app and routes other links to the external browser."
 authors = ["Neko7sora"]
 license = "MIT"
 edition = "2021"

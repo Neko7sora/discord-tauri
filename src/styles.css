@@ -28,8 +28,8 @@ body {
   place-items: center;
   padding: 24px;
   background:
-    radial-gradient(circle at top, rgba(120, 190, 120, 0.2), transparent 40%),
-    linear-gradient(180deg, #f4fbf4 0%, #e5f3e5 100%);
+    radial-gradient(circle at top, rgba(88, 101, 242, 0.28), transparent 42%),
+    linear-gradient(180deg, #eef1ff 0%, #dde3ff 100%);
 }
 
 .redirect-card {
@@ -37,8 +37,13 @@ body {
   padding: 32px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 18px 60px rgba(35, 68, 35, 0.12);
+  box-shadow: 0 18px 60px rgba(54, 64, 173, 0.16);
   text-align: center;
+}
+
+.redirect-logo {
+  display: block;
+  margin: 0 auto 16px;
 }
 
 .redirect-label {
@@ -47,17 +52,17 @@ body {
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #4d8c4d;
+  color: #5865f2;
 }
 
 .redirect-card h1 {
   margin: 0 0 12px;
   font-size: clamp(2rem, 5vw, 2.6rem);
-  color: #173117;
+  color: #1f2552;
 }
 
 .redirect-copy {
   margin: 0;
-  color: #426042;
+  color: #4d568f;
   line-height: 1.6;
 }

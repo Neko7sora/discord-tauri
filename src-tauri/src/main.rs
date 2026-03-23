@@ -3,13 +3,13 @@
 use tauri::{webview::NewWindowResponse, WebviewUrl, WebviewWindowBuilder};
 use url::Url;
 
-const APP_TITLE: &str = "misskey-tauri";
-const MISSKEY_URL: &str = "https://misskey.io";
-const MISSKEY_SCHEME: &str = "https";
-const MISSKEY_HOST: &str = "misskey.io";
+const APP_TITLE: &str = "discord-tauri";
+const DISCORD_URL: &str = "https://discord.com/login";
+const DISCORD_SCHEME: &str = "https";
+const DISCORD_HOST: &str = "discord.com";
 
 fn is_allowed_in_webview(url: &Url) -> bool {
-    url.scheme() == MISSKEY_SCHEME && url.host_str() == Some(MISSKEY_HOST)
+    url.scheme() == DISCORD_SCHEME && url.host_str() == Some(DISCORD_HOST)
 }
 
 fn is_http_or_https(url: &Url) -> bool {
@@ -25,9 +25,9 @@ fn open_external_in_browser(url: &Url) {
 fn main() {
     tauri::Builder::default()
         .setup(|app| {
-            let misskey_url = Url::parse(MISSKEY_URL).expect("misskey.io URL must be valid");
+            let discord_url = Url::parse(DISCORD_URL).expect("discord login URL must be valid");
 
-            WebviewWindowBuilder::new(app, "main", WebviewUrl::External(misskey_url))
+            WebviewWindowBuilder::new(app, "main", WebviewUrl::External(discord_url))
                 .title(APP_TITLE)
                 .inner_size(1320.0, 860.0)
                 .min_inner_size(920.0, 640.0)

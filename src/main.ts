@@ -9,8 +9,9 @@ if (!root) {
 root.innerHTML = `
   <main class="redirect-shell" aria-live="polite">
     <section class="redirect-card">
-      <p class="redirect-label">Misskey</p>
-      <h1>misskey.io を WebView で開いています</h1>
+      <img class="redirect-logo" src="/favicon.svg" alt="Discord logo" width="72" height="72" />
+      <p class="redirect-label">Discord</p>
+      <h1>discord.com/login を WebView で開いています</h1>
       <p class="redirect-copy">読み込みが終わるまで少し待ってください。</p>
     </section>
   </main>

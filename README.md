@@ -1,15 +1,15 @@
-# misskey-tauri
+# discord-tauri
 
-Tauri 2 + React + TypeScript + Vite で構築した Misskey 向けデスクトップブラウザです。
-現在は `https://misskey.io` のみをアプリ内 WebView で開き、それ以外の `http/https` 遷移や新規ウィンドウ要求は既定の外部ブラウザへ委譲する構成になっています。
+Tauri 2 + React + TypeScript + Vite で構築した Discord 向けデスクトップブラウザです。
+現在は `https://discord.com/login` のみをアプリ内 WebView で開き、それ以外の `http/https` 遷移や新規ウィンドウ要求は既定の外部ブラウザへ委譲する構成になっています。
 
 ## 現在の挙動
 
-- 起動時に `misskey.io` をメインウィンドウで開く
+- 起動時に `discord.com/login` をメインウィンドウで開く
 - ウィンドウタイトルをページタイトルに追従させる
-- `https://misskey.io` だけを WebView 内で許可する
-- `misskey.io` 以外への `http/https` 通常遷移を外部ブラウザで開く
-- `window.open` などの別窓要求で `misskey.io` 以外へ出る場合も外部ブラウザで開く
+- `https://discord.com` だけを WebView 内で許可する
+- `discord.com` 以外への `http/https` 通常遷移を外部ブラウザで開く
+- `window.open` などの別窓要求で `discord.com` 以外へ出る場合も外部ブラウザで開く
 - 非 `http/https` スキームの遷移は WebView 内で拒否する
 - Tauri の capability は `main` ウィンドウにだけ割り当て、IPC 権限は付与しない
 
