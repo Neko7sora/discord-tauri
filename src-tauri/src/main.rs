@@ -1,6 +1,6 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use tauri::{webview::NewWindowResponse, WebviewUrl, WebviewWindowBuilder};
+use tauri::{webview::NewWindowResponse, Manager, WebviewUrl, WebviewWindowBuilder};
 use url::Url;
 
 const APP_TITLE: &str = "discord-tauri";
@@ -26,6 +26,7 @@ fn main() {
     tauri::Builder::default()
         .setup(|app| {
             let discord_url = Url::parse(DISCORD_URL).expect("discord login URL must be valid");
+            let app_handle = app.handle().clone();
 
             WebviewWindowBuilder::new(app, "main", WebviewUrl::External(discord_url))
                 .title(APP_TITLE)
@@ -56,9 +57,21 @@ fn main() {
                         false
                     }
                 })
-                .on_new_window(|url, _features| {
+                .on_new_window(move |url, _features| {
                     if is_allowed_in_webview(&url) {
-                        NewWindowResponse::Allow
+                        // Deny the new window and redirect the main window instead.
+                        // A window created via NewWindowResponse::Allow would lack
+                        // the on_navigation / on_new_window handlers, so any page
+                        // loaded in it could navigate freely and bypass the
+                        // discord.com-only restriction.
+                        if let Some(main_window) = app_handle.get_webview_window("main") {
+                            let escaped = url.as_str().replace('\\', "\\\\").replace('"', "\\\"");
+                            let js = format!("window.location.href = \"{escaped}\";");
+                            if let Err(error) = main_window.eval(&js) {
+                                eprintln!("failed to redirect main window: {error}");
+                            }
+                        }
+                        NewWindowResponse::Deny
                     } else if is_http_or_https(&url) {
                         open_external_in_browser(&url);
                         NewWindowResponse::Deny
