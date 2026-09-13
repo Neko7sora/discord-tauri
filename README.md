@@ -1,6 +1,6 @@
 # discord-tauri
 
-Tauri 2 + React + TypeScript + Vite で構築した Discord 向けデスクトップブラウザです。
+Tauri 2 + TypeScript + Vite で構築した Discord 向けデスクトップブラウザです。
 現在は `https://discord.com/login` のみをアプリ内 WebView で開き、それ以外の `http/https` 遷移や新規ウィンドウ要求は既定の外部ブラウザへ委譲する構成になっています。
 
 ## 現在の挙動
@@ -16,7 +16,7 @@ Tauri 2 + React + TypeScript + Vite で構築した Discord 向けデスクト�
 ## 技術スタック
 
 - Tauri 2
-- TypeScript 5
+- TypeScript 6
 - Vite 8
 - Rust 2021
 - npm + Volta
@@ -27,8 +27,8 @@ Tauri 2 + React + TypeScript + Vite で構築した Discord 向けデスクト�
 
 ローカル開発は主に Windows を想定しています。
 
-- Node.js `24.14.0`
-- npm `11.9.0`
+- Node.js `24.21.0`
+- npm `12.0.2`
 - Rust stable
 - WebView2 Runtime
 - Microsoft C++ Build Tools
@@ -38,8 +38,8 @@ Tauri 2 + React + TypeScript + Vite で構築した Discord 向けデスクト�
 ## セットアップ
 
 ```powershell
-volta install node@24.14.0
-volta install npm@11.9.0
+volta install node@24.21.0
+volta install npm@12.0.2
 rustup update stable
 npm install
 ```
