@@ -28,7 +28,7 @@ Tauri 2 + TypeScript + Vite で構築した Discord 向けデスクトップブ�
 ローカル開発は主に Windows を想定しています。
 
 - Node.js `24.21.0`
-- npm `12.0.2`
+- npm `12.2.0`
 - Rust stable
 - WebView2 Runtime
 - Microsoft C++ Build Tools
@@ -39,7 +39,7 @@ Tauri 2 + TypeScript + Vite で構築した Discord 向けデスクトップブ�
 
 ```powershell
 volta install node@24.21.0
-volta install npm@12.0.2
+volta install npm@12.2.0
 rustup update stable
 npm install
 ```
