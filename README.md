@@ -25,13 +25,24 @@ Tauri 2 + TypeScript + Vite で構築した Discord 向けデスクトップブ�
 
 ## 必要環境
 
-ローカル開発は主に Windows を想定しています。
+Windows と macOS（Apple Silicon / Intel）に対応しています。
 
 - Node.js `24.21.0`
 - npm `12.2.0`
 - Rust stable
+
+Windows では、追加で次の環境が必要です。
+
 - WebView2 Runtime
 - Microsoft C++ Build Tools
+
+macOS では、Xcode または Xcode Command Line Tools が必要です。Apple Silicon では、Node.js と Rust も arm64 版を使用してください。
+
+```sh
+xcode-select --install
+```
+
+詳しくは [Tauri の必要環境](https://v2.tauri.app/start/prerequisites/)を参照してください。
 
 `package.json` に Volta 設定があるため、Volta を使うと Node.js / npm の版を合わせやすくなります。
 
@@ -82,6 +93,25 @@ npm run tauri:build
 - `src-tauri/target/release/`
 - `src-tauri/target/release/bundle/`
 
+### Apple Silicon 向けビルド
+
+macOS 上で次を実行します。
+
+```sh
+rustup target add aarch64-apple-darwin
+npm ci
+npm run tauri:build:macos:arm64
+```
+
+生成先:
+
+- アプリ: `src-tauri/target/aarch64-apple-darwin/release/bundle/macos/discord-tauri.app`
+- インストーラー: `src-tauri/target/aarch64-apple-darwin/release/bundle/dmg/`
+
+Apple Silicon では Rosetta を使わずネイティブで動作するビルドになります。開発起動は通常どおり `npm run tauri:dev` を使用します。
+
+macOS のバンドルには [Tauri の ad-hoc 署名](https://v2.tauri.app/distribute/sign/macos/#ad-hoc-signing)を設定しています。Apple による公証は行わないため、ダウンロードしたアプリの初回起動時に macOS の「プライバシーとセキュリティ」で実行の許可が必要になる場合があります。
+
 ## 利用できるスクリプト
 
 - `npm run dev`: Vite 開発サーバー
@@ -93,12 +123,14 @@ npm run tauri:build
 - `npm run tauri`: Tauri CLI
 - `npm run tauri:dev`: Tauri 開発起動
 - `npm run tauri:build`: Tauri 本番ビルド
+- `npm run tauri:build:macos:arm64`: macOS Apple Silicon 向け本番ビルド（macOS 上で実行）
 
 ## リリース
 
 GitHub Actions の [`.github/workflows/tauri-action.yml`](./.github/workflows/tauri-action.yml) で、`release` ブランチへの push または手動実行時にリリース用ビルドを作成します。
 
-- macOS
+- macOS Apple Silicon（`aarch64-apple-darwin`、`aarch64.dmg`）
+- macOS Intel（`x86_64-apple-darwin`、`x64.dmg`）
 - Ubuntu 24.04
 - Windows
 
