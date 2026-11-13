@@ -27,8 +27,8 @@ Tauri 2 + TypeScript + Vite で構築した Discord 向けデスクトップブ�
 
 Windows と macOS（Apple Silicon / Intel）に対応しています。
 
-- Node.js `24.21.0`
-- npm `12.2.0`
+- Node.js `26.13.1`
+- npm `12.2.2`
 - Rust stable
 
 Windows では、追加で次の環境が必要です。
@@ -49,8 +49,8 @@ xcode-select --install
 ## セットアップ
 
 ```powershell
-volta install node@24.21.0
-volta install npm@12.2.0
+volta install node@26.13.1
+volta install npm@12.2.2
 rustup update stable
 npm install
 ```
